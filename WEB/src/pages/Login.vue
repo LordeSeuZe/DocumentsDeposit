@@ -1,4 +1,8 @@
 <template>
+    <v-img src="../assets/Papers-Please-logo.jpg"
+    cover
+    height="100vh"
+  >
     <v-sheet class="mx-auto mt-16 px-2 py-2" width="300">
         <v-form @submit.prevent fast-fail>
             <v-text-field 
@@ -17,19 +21,19 @@
             color="primary"
             ></v-text-field>
 
-            <v-btn @click="logar" color="success">Login</v-btn>
+            <v-btn @click="logar">Login</v-btn>
         </v-form>
             <v-btn @click="dica" class="dica">
                 Dica
             </v-btn>
+            
     </v-sheet>
 
-    
+    </v-img>
 </template>
 
 <script setup>
     import { onBeforeMount, ref } from 'vue'
-    
     import { useRouter } from 'vue-router'
     const router = useRouter()
     const logar = () => {
@@ -37,15 +41,6 @@
         if(email.value == 'gloria@arstotzka.com' && senha.value == '08082013') {
            localStorage.email = email.value;
            localStorage.usuarioLogado = true;
-
-           //Exemplo com SessionStorage
-           //sessionStorage.email = email.value;
-           //sessionStorage.usuarioLogado = true;
-
-           //Para armazenar um Objeto no localStorage
-           //const novoUsuario = { nome: 'Aderbal', idade: 10 }
-           //localStorage.usuario = JSON.stringify(novoUsuario)
-
             router.push('/perfil')
         }else{
             alert('Email ou Senha incorreto')
@@ -80,10 +75,19 @@
 </script>
 
 <style scoped>
+.v-sheet{
+    background-color: rgba(88, 109, 68, 1);
+    border-radius: 10px;
+}
 
-.dica {
+.v-btn {
     margin: 10px 0 0 0;
-    background-color: rgb(143, 143, 0);
+    background-color: rgba(187, 55, 40, 1);
     color: azure;
+    border-radius: 5px;
+}
+
+.v-text-field{
+    color: black;
 }
 </style>
