@@ -19,6 +19,9 @@
 
             <v-btn @click="logar" color="success">Login</v-btn>
         </v-form>
+            <v-btn @click="dica" class="dica">
+                Dica
+            </v-btn>
     </v-sheet>
 
     
@@ -44,8 +47,14 @@
            //localStorage.usuario = JSON.stringify(novoUsuario)
 
             router.push('/perfil')
+        }else{
+            alert('Email ou Senha incorreto')
         }
         
+    }
+
+    const dica = () =>{
+        alert('Email: gloria@arstotzka.com \nSenha: 08082013')
     }
 
     onBeforeMount(() => {
@@ -69,3 +78,12 @@
         },
     ]
 </script>
+
+<style scoped>
+
+.dica {
+    margin: 10px 0 0 0;
+    background-color: rgb(143, 143, 0);
+    color: azure;
+}
+</style>
