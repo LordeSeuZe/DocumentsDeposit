@@ -33,13 +33,13 @@ export class ProdutosController {
     return this.produtosService.findOneByName(nomeProduto);
   }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateProdutoDto: UpdateProdutoDto) {
-    return this.produtosService.update(+id, updateProdutoDto);
+  @Patch(':nome')
+  update(@Param('nome') nome: string, @Body() updateProdutoDto: UpdateProdutoDto) {
+    return this.produtosService.update(nome, updateProdutoDto);
   }
 
-  @Delete(':id')
-  remove(@Param('id') id: number) {
-    return this.produtosService.remove(+id);
+  @Delete(':nome')
+  remove(@Param('nome') nome: string) {
+    return this.produtosService.remove(nome);
   }
 }

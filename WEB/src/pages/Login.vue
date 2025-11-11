@@ -31,7 +31,7 @@
     const router = useRouter()
     const logar = () => {
         //V1 de login, bem noob, sem BD!
-        if(email.value == 'a@a.com' && senha.value == '123123') {
+        if(email.value == 'gloria@arstotzka.com' && senha.value == '08082013') {
            localStorage.email = email.value;
            localStorage.usuarioLogado = true;
 
