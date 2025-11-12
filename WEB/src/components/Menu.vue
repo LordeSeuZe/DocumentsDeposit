@@ -1,4 +1,5 @@
 <template>
+ <v-img src="../assets/fundoPapersPlease.png " cover height="100vh">
   <v-layout>
     <v-navigation-drawer permanent>
       <v-list>
@@ -37,6 +38,7 @@
 
     </v-navigation-drawer>
   </v-layout>
+ </v-img> 
 </template>
 <script setup>
   import { useRouter } from 'vue-router';
@@ -47,3 +49,17 @@
     router.push('/')
   } 
 </script>
+<style scoped>
+
+.v-navigation-drawer{
+  background-image: url("../assets/cabinePaperPlease.png");
+  background-position: center;
+  background-size: cover;
+  height: 100vh;
+}
+  .v-list-item{
+    margin: 5px 0 0 0;
+    background-color: rgba(87, 72, 72, 0.8);
+    color: rgba(228, 230, 189);
+  }
+</style>

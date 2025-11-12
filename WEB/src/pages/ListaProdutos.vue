@@ -22,6 +22,7 @@ onBeforeMount(() => {
 </script>
 
 <template>
+
   <div class="d-flex">
     <Menu></Menu>
     <v-card title class="flex-1-1">
@@ -47,4 +48,9 @@ onBeforeMount(() => {
     </v-card>
 
   </div>
+
 </template>
+
+<style scoped>
+
+</style>
