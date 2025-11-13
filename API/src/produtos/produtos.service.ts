@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { CreateProdutoDto } from './dto/create-produto.dto';
 import { UpdateProdutoDto } from './dto/update-produto.dto';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Produto } from './entities/produto.entity';
+import { Documento } from './entities/produto.entity';
 import { MongoRepository } from 'typeorm';
 import { ObjectId } from 'mongodb';
 //Rafael Cacho de Barros
@@ -12,14 +12,14 @@ import { ObjectId } from 'mongodb';
 export class ProdutosService {
 
   constructor(
-    @InjectRepository(Produto)
-    private readonly produtoRepository: MongoRepository<Produto>
+    @InjectRepository(Documento)
+    private readonly produtoRepository: MongoRepository<Documento>
   ) { }
 
   create(createProdutoDto: CreateProdutoDto) {
-    const novoProduto = new Produto();
-    novoProduto.nome = createProdutoDto.nome;
-    novoProduto.preco = createProdutoDto.preco;
+    const novoProduto = new Documento();
+    novoProduto.pais = createProdutoDto.pais;
+    novoProduto.cidade = createProdutoDto.cidade;
     return this.produtoRepository.save(novoProduto);
   }
 
@@ -31,9 +31,9 @@ export class ProdutosService {
     return 'Buscar Produtos'
   }
 
-  async findOneByName(nome: string): Promise<any> {
+  async findOneByName(pais: string): Promise<any> {
 
-    const p = await this.produtoRepository.findOneBy({ nome: nome })
+    const p = await this.produtoRepository.findOneBy({ pais: pais })
       .then((produtoBD) => {
         console.log(produtoBD)
         return produtoBD
@@ -44,15 +44,15 @@ export class ProdutosService {
     return p
   }
 
-  async update(nome: string, updateProdutoDto: UpdateProdutoDto) {
-    const atualizado = await this.produtoRepository.findOneAndUpdate({ nome: nome }, { $set: updateProdutoDto }) 
+  async update(pais: string, updateProdutoDto: UpdateProdutoDto) {
+    const atualizado = await this.produtoRepository.findOneAndUpdate({ pais: pais }, { $set: updateProdutoDto }) 
     .then((produtoBD) => {
       console.log(produtoBD)
 
       if (!produtoBD) {
         throw (`Não temos como atualizar um produto que não existe!`)
       }
-      return `o Produto com o nome "${nome}" foi Atualizado!!!`;
+      return `o pais "${pais}" foi Atualizado!!!`;
     })
     .catch((erro) => {
       console.log(erro)
@@ -61,14 +61,14 @@ export class ProdutosService {
     return atualizado;
   }
 
-  async remove(nome: string) {
-    const remover = await this.produtoRepository.findOneAndDelete({ nome: nome })
+  async remove(pais: string) {
+    const remover = await this.produtoRepository.findOneAndDelete({ pais: pais })
       .then((produtoBD) => {
         console.log(produtoBD)
         if (!produtoBD) {
-          throw (`O produto com o nome "${nome}" não existe!`)
+          throw (`O produto com o pais "${pais}" não existe!`)
         }
-        return `o Produto com o nome "${nome}" foi removido`;
+        return `o Produto com o pais "${pais}" foi removido`;
       })
       .catch((erro) => {
         console.log(erro)

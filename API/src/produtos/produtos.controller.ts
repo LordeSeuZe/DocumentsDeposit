@@ -2,10 +2,10 @@ import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/commo
 import { ProdutosService } from './produtos.service';
 import { CreateProdutoDto } from './dto/create-produto.dto';
 import { UpdateProdutoDto } from './dto/update-produto.dto';
-import { Produto } from './entities/produto.entity';
 
 
-@Controller('produtos')
+
+@Controller('documentos')
 export class ProdutosController {
   constructor(private readonly produtosService: ProdutosService) {}
 
@@ -27,9 +27,9 @@ export class ProdutosController {
     return this.produtosService.findOne(_id);
   }
 
-  //url_api/produtos/nome/Arroz
-  @Get('/nome/:nomeProduto')
-  findOneByName(@Param('nomeProduto') nomeProduto: string) {
+ 
+  @Get('/pais/:nomePais')
+  findOneByName(@Param('nomePais') nomeProduto: string) {
     return this.produtosService.findOneByName(nomeProduto);
   }
 

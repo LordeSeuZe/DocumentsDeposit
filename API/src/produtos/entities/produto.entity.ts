@@ -3,15 +3,15 @@ import { ObjectId } from "mongodb";
 import { Column, CreateDateColumn, Entity, ObjectIdColumn, PrimaryColumn } from "typeorm";
 
 @Entity()
-export class Produto {
+export class Documento {
     @ObjectIdColumn()
     _id: string;
     
     @Column('text')
-    nome: string;
+    pais: string;
 
-    @Column('float')
-    preco: number;
+    @Column('text')
+    cidade: string;
 
     @CreateDateColumn()
     create_at: Date;

@@ -3,8 +3,8 @@
   <v-layout>
     <v-navigation-drawer permanent>
       <v-list>
-        <v-list-item prepend-avatar="../assets/avatar.png" title="Aderbal da Silva Sauro"
-          subtitle="aderbal@email.com"></v-list-item>
+        <v-list-item prepend-avatar="../assets/avatar.png" title="Agente de Fronteira"
+          subtitle="gloria@arstotzka.com"></v-list-item>
       </v-list>
 
       <v-divider></v-divider>
@@ -18,14 +18,14 @@
         ></v-list-item>
         <v-list-item
           prepend-icon="mdi-list-box-outline"
-          title="Listar Produtos"
-          value="listaProdutos"
-          to="/produtos"
+          title="Listar Documentos"
+          value="listaDocumentos"
+          to="/documentos"
         ></v-list-item>
         <v-list-item
           prepend-icon="mdi-plus"
-          title="Cadastrar Produto"
-          value="cadastrarProdutos"
+          title="Cadastrar Documento"
+          value="cadastrarDocumentos"
           to="/cadastrar"
         ></v-list-item>
         <v-list-item
