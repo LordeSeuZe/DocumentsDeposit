@@ -17,7 +17,7 @@ export class ProdutosService {
   ) { }
 
   create(createProdutoDto: CreateProdutoDto) {
-    const novoProduto = new Documento();
+    const novoProduto = new Documento(); 
     novoProduto.pais = createProdutoDto.pais;
     novoProduto.cidade = createProdutoDto.cidade;
     return this.produtoRepository.save(novoProduto);

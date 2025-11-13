@@ -28,7 +28,6 @@
             </v-btn>
             
     </v-sheet>
-
     </v-img>
 </template>
 

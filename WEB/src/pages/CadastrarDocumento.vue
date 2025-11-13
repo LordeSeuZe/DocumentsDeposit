@@ -31,7 +31,8 @@ const cadastrarDocumento = () => {
       <h1>Relatório de Documento Apreendido</h1>
       <v-sheet class="mx-auto mt-16 px-2 py-3" width="1000px">
         <v-form @submit.prevent fast-fail>
-          <v-text-field v-model="pais" type="text" label="pais" color="primary"></v-text-field>
+
+          <v-text-field v-model="pais" type="text" label="Pais" color="primary"></v-text-field>
 
           <v-text-field v-model="cidade" type="text" label="Cidade" color="primary"></v-text-field>
 

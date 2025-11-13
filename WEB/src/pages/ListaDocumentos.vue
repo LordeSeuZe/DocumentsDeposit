@@ -29,6 +29,20 @@ const remove = (pais) =>{
   })
 }
 
+const abrirModal = (documento) => {
+  state.produtoEdicao = documento
+  state.mostrarModal = true
+}
+
+ const editarProduto = (pais) => {
+   axios.patch(`${URL_API}/documetos/${pais}`)
+   .then(() =>{
+    
+  }).finally(() =>{
+    state.mostrarModal = false
+  })
+
+}
 
 </script>
 
@@ -53,13 +67,43 @@ const remove = (pais) =>{
           <tr v-for="item in state.documento" :key="item.name">
             <td>{{ item.pais }}</td>
             <td>{{ item.cidade }}</td>
-            <v-btn >EDITAR</v-btn>
-            <v-btn @click="remove(item.pais)" >Queimar</v-btn>
+            <v-btn @click="abrirModal(item)">EDITAR</v-btn>
+            <v-btn @click="remove(item.pais)">Queimar</v-btn>
           </tr>
         </tbody>
       </v-table>
     </v-card>
+<v-dialog max-width="500" v-model="state.mostrarModal">
+      <template v-slot:default="{ isActive }">
+        <v-card title="Editar Produto">
+          <v-card-text>
+            <v-sheet class="mx-2 p-2">
+              <v-form @submit.prevent fast-fail>
+                <v-text-field 
+                v-model="state.produtoEdicao.pais" 
+                type="text" 
+                label="pais"  
+                color="primary"></v-text-field>
+                <v-text-field
+                type="text" 
+                label="Nome"
+                v-model="state.produtoEdicao.cidade"
+                ></v-text-field>
 
+              </v-form>
+            </v-sheet>
+          </v-card-text>
+          <v-card-actions>
+            <v-spacer></v-spacer>
+            <v-btn
+              text="Editado!"
+              @click="editarProduto"
+              color="primary"
+            ></v-btn>
+          </v-card-actions>
+        </v-card>
+      </template>
+    </v-dialog>
   </div>
 
 </template>
