@@ -56,7 +56,7 @@ const abrirModal = (documento) => {
         <thead>
           <tr>
             <th class="text-left">
-              pais
+              Pais
             </th>
             <th class="text-left">
               Cidade
@@ -82,11 +82,11 @@ const abrirModal = (documento) => {
                 <v-text-field 
                 v-model="state.produtoEdicao.pais" 
                 type="text" 
-                label="pais"  
+                label="Pais"  
                 color="primary"></v-text-field>
                 <v-text-field
                 type="text" 
-                label="Nome"
+                label="Cidade"
                 v-model="state.produtoEdicao.cidade"
                 ></v-text-field>
 
@@ -109,5 +109,48 @@ const abrirModal = (documento) => {
 </template>
 
 <style scoped>
+.v-sheet{
+    background-color: rgba(88, 109, 68, 1);
+}
+th {
+   background-color:rgba(59, 79, 41, 0.382) !important;
+   
+}
+td{
+  border: 0.5px black solid;
+}
+.v-table{
+    background-color:rgba(59, 79, 41, 0.382);
+    margin-top: 10px !important;
+}
+
+.v-card  {
+    width: 400px; 
+    padding: 30px;
+    background-color: rgba(88, 109, 68, 1);
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+ .v-text-field {
+    width: 47vh; 
+    padding: 10px;
+    background-color: rgba(88, 109, 68, 1);
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.v-card h1 {
+    text-align: center;
+    width: 100%;
+    background-color:  rgba(59, 79, 41, 0.382);
+    border-radius: 10px;
+}
+
+.v-btn {
+    background-color: rgba(187, 55, 40, 1);
+    color: aliceblue;
+    display: block;
+    
+}
 
 </style>

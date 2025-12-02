@@ -1,5 +1,4 @@
-<script setup>
-import Menu from '@/components/Menu.vue'
+<script>
 import axios from 'axios'
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
@@ -21,17 +20,11 @@ const cadastrarDocumento = () => {
     console.log(erro)
   })
 }
-
 </script>
 
 <template>
 
-  <div class="d-flex fill-height">
-    <Menu></Menu>
-    
-    
-
-      <v-card title>
+<v-card title>
         <h1>Relatório de Documento Apreendido</h1>
         
         <v-sheet class="mx-auto mt-16 px-2 py-3" width="1000px">
@@ -41,18 +34,14 @@ const cadastrarDocumento = () => {
 
             <v-text-field v-model="cidade" type="text" label="Cidade" color="primary"></v-text-field>
 
-            <v-btn @click="cadastrarDocumento">Cadastrar</v-btn>
+            <v-btn @click="cadastrarDocumento" color="success">Cadastrar</v-btn>
           </v-form>
         </v-sheet>
       </v-card>
 
-  </div>
 </template>
 
 <style scoped>
-.v-sheet{
-    background-color: rgba(88, 109, 68, 1);
-}
 
 .v-card {
     width: 400px; 
@@ -61,14 +50,6 @@ const cadastrarDocumento = () => {
     border-radius: 10px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
 }
- .v-text-field {
-    width: 47vh; 
-    padding: 10px;
-    background-color: rgba(88, 109, 68, 1);
-    border-radius: 10px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-}
-
 .v-card h1 {
     text-align: center;
     width: 100%;
@@ -76,11 +57,9 @@ const cadastrarDocumento = () => {
     border-radius: 10px;
 }
 
-.v-btn {
-    background-color: rgba(187, 55, 40, 1);
-    color: aliceblue;
-    display: block;
-    
+
+.fill-height {
+    height: 100vh;
 }
 
 </style>
