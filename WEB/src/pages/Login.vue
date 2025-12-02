@@ -20,13 +20,11 @@
             :rules="senhaRegras"
             color="primary"
             ></v-text-field>
-
-            <v-btn @click="logar">Login</v-btn>
+            <div class="linha-botoes">
+            <v-btn @click="logar">Entrar</v-btn>
+            <v-btn @click="cadastrar">Criar</v-btn>
+            </div>
         </v-form>
-            <v-btn @click="dica" class="dica">
-                Dica
-            </v-btn>
-            
     </v-sheet>
     </v-img>
 </template>
@@ -34,37 +32,54 @@
 <script setup>
     import { onBeforeMount, ref } from 'vue'
     import { useRouter } from 'vue-router'
+    import axios from 'axios' 
+    
     const router = useRouter()
-    const logar = () => {
-        //V1 de login, bem noob, sem BD!
-        if(email.value == 'gloria@arstotzka.com' && senha.value == '08082013') {
-           localStorage.email = email.value;
-           localStorage.usuarioLogado = true;
-            router.push('/perfil')
-        }else{
-            alert('Email ou Senha incorreto')
-        }
+    const email = ref('')
+    const senha = ref('')
+
+    const API_URL = 'http://localhost:3000/usuarios/login' 
+
+    const logar = async () => {
+ 
+        try {
+            if (!email.value || !senha.value) {
+                alert('Documentos, Por Favor!')
+                return
+            }
+            const api_resposta = await axios.post(API_URL, {
+                email: email.value,
+                senha: senha.value
+            })
         
+            const token = api_resposta.data.token || api_resposta.data.accessToken; 
+            if (token) {
+                localStorage.setItem('authToken', token);
+            }
+            localStorage.setItem('usuarioLogado', true);
+            router.push('/perfil')
+            
+        } catch (error) {
+            console.error('Erro de Login:', error)
+        }
     }
 
-    const dica = () =>{
-        alert('Email: gloria@arstotzka.com \nSenha: 08082013')
+    const cadastrar = () =>{
+        router.push('/cadastrarUsu')
     }
-
+    
     onBeforeMount(() => {
-        const usuarioLogado = localStorage.usuarioLogado? JSON.parse(localStorage.usuarioLogado) : false;
-        if(usuarioLogado)
+        const authToken = localStorage.getItem('authToken');
+        if(authToken)
             router.push('/perfil')
     })
 
-    const email = ref('')
     const emailRegras = [
     value => {
       if (/^[a-z.-]+@[a-z.-]+\.[a-z]+$/i.test(value)) return true
       return 'Insira um e-mail válido.'
     },
   ]
-    const senha = ref('')
     const senhaRegras = [
         value => {
             if(senha.value.length >= 5) return true
@@ -88,5 +103,10 @@
 
 .v-text-field{
     color: black;
+}
+
+.linha-botoes {
+    display: flex;
+    justify-content: space-between;
 }
 </style>
